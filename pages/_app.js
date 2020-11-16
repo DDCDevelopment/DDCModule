@@ -3,6 +3,10 @@ import Head from 'next/head';
 import { AppProvider } from '@shopify/polaris';
 import '@shopify/polaris/dist/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
+//libs
+import React from "react";
+import ReactDOM from "react-dom";
+
 
 class MyApp extends App {
     render() {
