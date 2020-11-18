@@ -34,10 +34,10 @@ class AnnotatedLayout extends React.Component {
                             <Form onSubmit={this.handleSubmit}>
                                 <FormLayout>
                                     <TextField
-                                    value={discount}
-                                    onChange={this.handleChange('discount')}
-                                    label="Discount percentage"
-                                    type="discount"
+                                        value={discount}
+                                        onChange={this.handleChange('discount')}
+                                        label="Discount percentage"
+                                        type="discount"
                                     />
                                         <Stack distribution="trailing">
                                             <Button primary submit>
@@ -64,6 +64,7 @@ class AnnotatedLayout extends React.Component {
                         </SettingToggle>
                     </Layout.AnnotatedSection>
                 </Layout>
+                <img src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/250px-Image_created_with_a_mobile_phone.png'}></img>
             </Page>
         );
     }
