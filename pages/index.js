@@ -41,11 +41,11 @@ class Index extends React.Component {
                     }}
                     />
                     <ResourcePicker
-                    resourceType="Product"
-                    showVariants={false}
-                    open={this.state.open}
-                    onSelection={(resources) => this.handleSelection(resources)}
-                    onCancel={() => this.setState({ open: false })}
+                        resourceType="Product"
+                        showVariants={false}
+                        open={this.state.open}
+                        onSelection={(resources) => this.handleSelection(resources)}
+                        onCancel={() => this.setState({ open: false })}
                     />
                     <Layout>
                         <EmptyState
@@ -58,6 +58,7 @@ class Index extends React.Component {
                         >
                             <p>Select products to change their price temporarily.</p>
                         </EmptyState>
+                        {/* POPUP */}
                         <input type="button" value="Open" onClick={() => this.openModal()} />
                         <Modal 
                             visible={this.state.visible}
@@ -72,6 +73,7 @@ class Index extends React.Component {
                                 <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
                             </div>
                         </Modal>
+                        {/* END POPUP */}
                     </Layout>
                 </Page>
             </div>
