@@ -128,4 +128,6 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById('root'));
+if (typeof document !== 'undefined') {
+  render(<App />, document.getElementById('root'));
+}
