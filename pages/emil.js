@@ -1,7 +1,7 @@
 import { EmptyState, Layout, Page } from '@shopify/polaris';
 import { ResourcePicker, TitleBar } from '@shopify/app-bridge-react';
 import React from 'react';
-import './style.css';
+import './mystyle.css';
 import Modal from 'react-awesome-modal';
 //import {$,jQuery} from 'jquery';
 import { Container, Row, Col, Card, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
@@ -55,7 +55,7 @@ class Index extends React.Component {
                     product.push(
                         
                         <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][0], 1)}>
-                            <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" class="img_prod"/>
+                            <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" className="img_prod"/>
                             <Card.Body>
                                 <Card.Title>{product_array[x][0]}</Card.Title>
                                 <Card.Text>
@@ -73,7 +73,7 @@ class Index extends React.Component {
                 for (let y = 1; product_array[x][y]; y++){
                     product.push(
                         <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
-                            <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" class="img_prod"/>
+                            <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" className="img_prod"/>
                             <Card.Body>
                                 <Card.Title>{product_array[x][y]}</Card.Title>
                                 <Card.Text>
@@ -123,16 +123,16 @@ class Index extends React.Component {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                 <body>
 
-                    <div class="navbar">
-                        <button class="btn"><i class="fa fa-refresh"></i> Refresh</button>
-                        <button class="btn"><i class="fa fa-cog"></i> Settings</button>
+                    <div className="navbar">
+                        <button className="btn"><i className="fa fa-refresh"></i> Refresh</button>
+                        <button className="btn"><i className="fa fa-cog"></i> Settings</button>
                     </div>
 
-                    <div class="head">
+                    <div className="head">
                         <h1 id="titre-page">
                             Ajouter des produits à endvoyer à notre équipe
                         </h1>
-                        <p class="ssTitre">Vous êtes à quelques pas de la personnalisation</p>
+                        <p className="ssTitre">Vous êtes à quelques pas de la personnalisation</p>
                     </div>
 
 
@@ -140,15 +140,15 @@ class Index extends React.Component {
 
                     <div id="centre">
                         <img src="https://img.icons8.com/ios/452/t-shirt--v1.png" alt="" id="img_center"></img>
-                        <div class="center">
-                            <Button variant="primary" type="button" class="button" value="Open" onClick={() => this.openModal()}>Open</Button>
+                        <div className="center">
+                            <Button variant="primary" type="button" className="button" value="Open" onClick={() => this.openModal()}>Open</Button>
                             <Modal visible={this.state.visible} width="1500" height="600" effect="fadeInUp"
                                 onClickAway={() => this.closeModal()}>
 
 
                             <div id="Product-card">
 
-                                <a href="javascript:void(0);" onClick={() => this.closeModal()}><i class="fa fa-close close_modal"></i></a>
+                                <a href="javascript:void(0);" onClick={() => this.closeModal()}><i className="fa fa-close close_modal"></i></a>
 
                                 {this.DisplayCategory('Product_list', 1)}
 
@@ -157,7 +157,7 @@ class Index extends React.Component {
 
                             <div id="under_product">
 
-                                <a href="javascript:void(0);" onClick={() => this.HideCategory(1)}><i class="fa fa-close close_modal"></i></a>
+                                <a href="javascript:void(0);" onClick={() => this.HideCategory(1)}><i className="fa fa-close close_modal"></i></a>
 
                                 {this.DisplayCategory(selected_product, 2)}
 
@@ -165,7 +165,7 @@ class Index extends React.Component {
 
                             <div id="selected_perso">
 
-                                <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><i class="fa fa-close close_modal"></i></a>
+                                <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><i className="fa fa-close close_modal"></i></a>
                                 <p>i'm here {selected_underproduct}</p>
 
                             </div>
