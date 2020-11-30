@@ -1,0 +1,178 @@
+body{
+  font-family: "Gill Sans", sans-serif;
+  width: auto;
+  height: auto;
+  /*background-color: purple;*/
+}
+
+#titre-page{
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 1%;
+
+}
+
+.ssTitre{
+  color: grey;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: bold;
+  padding: 2%;
+}
+
+.head{
+  text-align: center;
+  /*background-color: purple;*/
+  width: auto;
+  height: 80px;
+}
+
+
+#logo_dealer{
+  height: 5%;
+  width: 10%;
+  margin-top: 3%;
+
+}
+
+#img_center{
+  height: 50%;
+  width: 15%;
+  margin-top: 1%;
+}
+
+.img_prod{
+  height: 80%;
+  width: 60%;
+}
+
+#btn_setting{
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 2%;
+  width: 10%;
+  margin: 1%;
+}
+
+.btn {
+  /*background-color: pink;*/
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 2%;
+  width: 10%;
+  margin: 1%;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: #c9c6c5;
+  border-color: #c9c6c5;
+}
+
+.navbar{
+  text-align: right;
+  /*background-color: black;*/
+  width: 100%;
+}
+
+#centre{
+  text-align: center;
+  margin-top: 5%;
+  /*background-color: green;*/
+  height: 300px;
+  width: 1000px;
+}
+
+#btn_openModal{
+  background-color: #153662;
+  color: white;
+  border: Opx solid #245ba3;
+  border-radius: 5px;
+  
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 18rem;
+  text-align: center;
+  /*background-color: orange;*/
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.filterDiv {
+  display: none;
+  padding: 1%;
+}
+
+.show {
+  display: block;
+}
+
+
+
+#dropdown-basic-button{
+  background-color: #e8e8e8
+}
+
+#div_filtre{
+  background-color: #f7f7f7;
+  width: 120px;
+  height: 300px;
+  text-align: center;
+}
+
+#btn_filtre{
+  height: 10%;
+  width: 80%;
+  padding: 2%;
+  margin-top: 5%;
+  border-radius: 4px;
+  background-color: #245ba3;
+  color: white;
+  font-size: 100%;
+}
+
+#div_card{
+
+  position: fixed;
+  top:10px;
+  left: 200px;
+  border: black;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: center;
+  max-height: 95%;
+  overflow: scroll;
+}
+
+.vl {
+  border-left: 6px solid #245ba3;
+  height: 500px;
+  position: fixed;
+  left: 150px;
+}
+
+#btn_close_modal{
+  height: 5%;
+  width: 8%;
+  float: right;
+  border: 0px solid black;
+  border-radius: 5px;
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+  text-align: center;
+  background-color: #245ba3;
+  color: white;
+  font-size: 100%;
+}

@@ -3,7 +3,8 @@
         [
             "Textile",
             "Tote Bag",
-            "Tee-shirt",
+            "Tee-shirt Blanc",
+            "Tee-shirt Noir",
             "Coussin",
             "Masque"
         ],
@@ -24,7 +25,7 @@
             "Silicone UV",
             "Gel UV",
             "3D",
-            "Silicone x Verre trempé Subli",
+            "Silicone x Verre trempé Sublimation",
             "Bois Sublimation"
         ],
         [
@@ -42,6 +43,13 @@
             "Airpod transparente",
             "Airpod pro transparente"
         ]
+    ],
+    "textile": [
+        "Tee-shirt"
+    ],
+    "coque": [
+        "Sublimation",
+        "UV"
     ]
 }
 

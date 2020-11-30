@@ -3,14 +3,15 @@ import { ResourcePicker, TitleBar } from '@shopify/app-bridge-react';
 import React from 'react';
 import './mystyle.css';
 import Modal from 'react-awesome-modal';
-//import {$,jQuery} from 'jquery';
-import { Container, Row, Col, Card, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardColumns, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import jsondata from './data.JSON';
-/*import img from 'Teeshirt.jpg';*/
 
 /*var stringified = JSON.stringify(jsondata);
-var parsedObj = JSON.parse(stringified);*/        //Import data from data.json, and parse it
+var parsedObj = JSON.parse(stringified);*/      //Import data from data.json, and parse it
 var product_array = jsondata.product;           //Stock the data into a var to make it a 2D Array
+var filter_textile = jsondata.textile;
+var filter_coque = jsondata.coque;
+
 var selected_product = 'Textile';               //Define a default product category to prevent error
 var selected_underproduct = product_array[0][1];
 
@@ -35,6 +36,56 @@ class Index extends React.Component {
             }
         }
 
+
+
+    filterSelection(c){                                         //filter elements
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            this.RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) this.AddClass(x[i], "show");
+        }
+    }
+
+    AddClass(element, name) {                                   //Add a class to the element select by the filter
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+    }
+
+    RemoveClass(element, name) {                                //remove a class of an element
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    takeClass(product) {                                        //apply a css class to product for the fliter
+        for (let x = 0; filter_coque[x]; x++) {
+            if (product.includes(filter_coque[x])) {            //Check for filter list of the product "Coque"
+                return ("filterDiv " + filter_coque[x] + " show");
+            }
+        }
+        for (let x = 0; filter_textile[x]; x++) {
+            if (product.includes(filter_textile[x])) {          //Check for filter list of the product "Textile"
+                return ("filterDiv " + filter_textile[x] + " show");
+            }
+        }
+        return ("filterDiv else show");                         //If the product do not have a filter, return default value.
+    }
+
+
+
+
     HandleOnClick(category, number) {
         if (number == 1){
             selected_product = category;
@@ -48,10 +99,40 @@ class Index extends React.Component {
         this.openModal();                       //Refresh the Modal (popup)
     }
 
-    DisplayCategory(category) {                 //Function that generate te list of category and product
+
+
+
+
+    DisplayFilter(product) {                    //Show filter menu depending of the data stocked into data.JSON file
+        if (product == 'Textile' || product == 'Coque') {
+            let filter = [];
+            let current_filter = (product =='Textile') ? filter_textile : filter_coque;
+            return (
+                <DropdownButton id="dropdown-basic-button" title="Filtres">
+                    <ButtonGroup id="div_filtre">
+
+                                    {/*Filter All*/}
+                        <Row>
+                            <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                        </Row>
+
+                                    {/*Call function to create filter from data.JSON depending of selected category.*/}
+                        {current_filter.map(active_filter => (
+                        <Row>
+                            <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                        </Row>
+                    ))}
+
+                    </ButtonGroup>
+                </DropdownButton>
+            );
+        }
+    }
+
+    DisplayCategory(category) {                         //Function that generate te list of category and product
         if (category == 'Product_list') {
             let product = [];
-                for (let x = 0; product_array[x]; x++){  //Generate the product category by displaying each 1st item of product array (ex : product_array[x][0])
+                for (let x = 0; product_array[x]; x++){ //Generate the product category by displaying each 1st item of product array (ex : product_array[x][0])
                     product.push(
                         
                         <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][0], 1)}>
@@ -72,7 +153,7 @@ class Index extends React.Component {
             let x = findProduct(product_array, selected_product);
                 for (let y = 1; product_array[x][y]; y++){
                     product.push(
-                        <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
+                        <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
                             <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" className="img_prod"/>
                             <Card.Body>
                                 <Card.Title>{product_array[x][y]}</Card.Title>
@@ -86,6 +167,9 @@ class Index extends React.Component {
             return(product);
         }
     }
+
+
+
 
     ShowCategory(number) {
         if (typeof document !== 'undefined') {
@@ -101,6 +185,10 @@ class Index extends React.Component {
         }
     }
 
+
+
+
+
     openModal() {
         this.setState({             //Open the popup AND refresh it if you call it again
             visible : true
@@ -112,6 +200,8 @@ class Index extends React.Component {
             visible : false
         });
     }
+
+
 
     state = { open: false };
     render() {                      //HTML code.
@@ -148,24 +238,30 @@ class Index extends React.Component {
 
                             <div id="Product-card">
 
-                                <a href="javascript:void(0);" onClick={() => this.closeModal()}><i className="fa fa-close close_modal"></i></a>
+                                <a href="javascript:void(0);" onClick={() => this.closeModal()}><button class="close_modal">Close</button></a>
 
-                                {this.DisplayCategory('Product_list', 1)}
+                                <CardColumns id="div_card">
+                                    {this.DisplayCategory('Product_list', 1)}
+                                </CardColumns>
+
 
                             </div>
 
 
                             <div id="under_product">
 
-                                <a href="javascript:void(0);" onClick={() => this.HideCategory(1)}><i className="fa fa-close close_modal"></i></a>
+                                <a href="javascript:void(0);" onClick={() => this.HideCategory(1)}><button class="close_modal">Back</button></a>
 
+                                {this.DisplayFilter(selected_product)}
+
+                                <CardColumns id="div_card">
                                 {this.DisplayCategory(selected_product, 2)}
-
+                                </CardColumns>
                             </div>
 
                             <div id="selected_perso">
 
-                                <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><i className="fa fa-close close_modal"></i></a>
+                                <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><button class="close_modal">Back</button></a>
                                 <p>i'm here {selected_underproduct}</p>
 
                             </div>
