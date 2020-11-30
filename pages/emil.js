@@ -8,8 +8,8 @@ import { Container, Row, Col, Card, Button, ButtonGroup, DropdownButton, Dropdow
 import jsondata from './data.JSON';
 /*import img from 'Teeshirt.jpg';*/
 
-var stringified = JSON.stringify(jsondata);
-var parsedObj = JSON.parse(stringified);        //Import data from data.json, and parse it
+/*var stringified = JSON.stringify(jsondata);
+var parsedObj = JSON.parse(stringified);*/        //Import data from data.json, and parse it
 var product_array = jsondata.product;           //Stock the data into a var to make it a 2D Array
 var selected_product = 'Textile';               //Define a default product category to prevent error
 var selected_underproduct = product_array[0][1];
