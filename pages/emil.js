@@ -5,6 +5,7 @@ import './mystyle.css';
 import Modal from 'react-awesome-modal';
 import { Container, Row, Col, Card, CardColumns, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import jsondata from './data.JSON';
+import App from './fabric';
 
 /*var stringified = JSON.stringify(jsondata);
 var parsedObj = JSON.parse(stringified);*/      //Import data from data.json, and parse it
@@ -19,6 +20,9 @@ var list_cat = ["Product-card", "under_product", "selected_perso"];
 
 const img = 'https://media3.dealerdecoque.fr/themes/ddcV2/img/logo_ddc.svg';
 
+
+
+
 function findProduct(array, tofind) {
     for (let x = 0; array[x]; x++) {            //Find clicked product in the 2D Array
         if (array[x][0] === tofind) {           //And return the position value 
@@ -26,6 +30,10 @@ function findProduct(array, tofind) {
         }
     }
 }
+
+
+
+
 
 class Index extends React.Component {
     state = { open: false };
@@ -69,6 +77,7 @@ class Index extends React.Component {
         element.className = arr1.join(" ");
     }
 
+
     takeClass(product) {                                        //apply a css class to product for the fliter
         for (let x = 0; filter_coque[x]; x++) {
             if (product.includes(filter_coque[x])) {            //Check for filter list of the product "Coque"
@@ -103,7 +112,7 @@ class Index extends React.Component {
 
 
 
-    DisplayFilter(product) {                    //Show filter menu depending of the data stocked into data.JSON file
+    DisplayFilter(product) {                            //Show filter menu depending of the data stocked into data.JSON file
         if (product == 'Textile' || product == 'Coque') {
             let filter = [];
             let current_filter = (product =='Textile') ? filter_textile : filter_coque;
@@ -111,12 +120,12 @@ class Index extends React.Component {
                 <DropdownButton id="dropdown-basic-button" title="Filtres">
                     <ButtonGroup id="div_filtre">
 
-                                    {/*Filter All*/}
+                                                        {/*Filter All*/}
                         <Row>
                             <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
                         </Row>
 
-                                    {/*Call function to create filter from data.JSON depending of selected category.*/}
+                                                        {/*Call function to create filter from data.JSON depending of selected category.*/}
                         {current_filter.map(active_filter => (
                         <Row>
                             <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
@@ -203,6 +212,7 @@ class Index extends React.Component {
 
 
 
+
     state = { open: false };
     render() {                      //HTML code.
     return (
@@ -220,7 +230,7 @@ class Index extends React.Component {
 
                     <div className="head">
                         <h1 id="titre-page">
-                            Ajouter des produits à endvoyer à notre équipe
+                            Ajouter des produits à envoyer à notre équipe
                         </h1>
                         <p className="ssTitre">Vous êtes à quelques pas de la personnalisation</p>
                     </div>
@@ -263,7 +273,7 @@ class Index extends React.Component {
 
                                 <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><button class="close_modal">Back</button></a>
                                 <p>i'm here {selected_underproduct}</p>
-
+                                <App />
                             </div>
 
 
@@ -287,6 +297,10 @@ class Index extends React.Component {
         </div>
     );
     }
+
+
+
+
     handleSelection = (resources) => {
         const idsFromResources = resources.selection.map((product) => product.id);      //Ca sert à rien.
         this.setState({ open: false })                                                  //Mais c'est pour le lore.

@@ -5,8 +5,7 @@
             "Tote Bag",
             "Tee-shirt Blanc",
             "Tee-shirt Noir",
-            "Coussin",
-            "Masque"
+            "Coussin"
         ],
         [
             "Affiche",
@@ -41,7 +40,13 @@
         [
             "Airpod",
             "Airpod transparente",
-            "Airpod pro transparente"
+            "Airpod pro transparente",
+            "Airpods Pro"
+        ],
+        [
+            "Ordinateur",
+            "Apple macbook",
+            "asus 4"
         ]
     ],
     "textile": [
@@ -49,7 +54,8 @@
     ],
     "coque": [
         "Sublimation",
-        "UV"
+        "UV",
+        "3D"
     ]
 }
 
