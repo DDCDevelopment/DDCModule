@@ -1,0 +1,64 @@
+{
+    "product": [
+        [
+            "Textile",
+            "Tote Bag",
+            "Tee-shirt Blanc",
+            "Tee-shirt Noir",
+            "Coussin"
+        ],
+        [
+            "Affiche",
+            "Affiche",
+            "bido"
+        ],
+        [
+            "Mugs", 
+            "Mugs",
+            "Mugs emaillée",
+            "Mugs magique"
+        ],
+        [
+            "Coque",
+            "Plastique Sublimation",
+            "Silicone Sublimation",
+            "Silicone UV",
+            "Gel UV",
+            "3D",
+            "Silicone x Verre trempé Sublimation",
+            "Bois Sublimation"
+        ],
+        [
+            "Accessoire",
+            "Grips",
+            "Tapis de souris",
+            "Porte-clef Bois",
+            "Cadre photo",
+            "Badge",
+            "Puzzle",
+            "Masque"
+        ],
+        [
+            "Airpod",
+            "Airpod transparente",
+            "Airpod pro transparente",
+            "Airpods Pro"
+        ],
+        [
+            "Ordinateur",
+            "Apple macbook",
+            "asus 4"
+        ]
+    ],
+    "textile": [
+        "Tee-shirt",
+        "libi"
+    ],
+    "coque": [
+        "Sublimation",
+        "UV",
+        "3D"
+    ]
+}
+
+

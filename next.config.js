@@ -8,6 +8,16 @@ module.exports = withCSS({
     webpack: (config) => {
         const env = { API_KEY: apiKey };
         config.plugins.push(new webpack.DefinePlugin(env));
+        config.module.rules.push({
+            test: /\.(jpg|jpeg|gif|png)$/,
+            use: {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]',
+                publicPath: '/',
+              }
+            }
+          });
         return config;
     },
 });
