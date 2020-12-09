@@ -38,12 +38,60 @@ const App = () => {
 
     const addImage = function() {                               //Button Image
         fabric.Image.fromURL('http://atelierdudealer.fr/images/logo-dealer.png',function(img) {
-        img.crossOrigin = 'Anonymous';
+        img.crossOrigin = 'anonymous';
         img.scale(0.05).set({opacity: 1});
         canvas.add(img);
         canvas.renderAll();
     });
     }
+/*
+    if (typeof document !== 'undefined') {
+        var user_picture = document.getElementById("imgLoader");
+        user_picture.onchange = function(){
+            var reader = new FileReader();
+            reader.onload = function (event){
+                var imgObj = new Image();
+                imgObj.src = event.target.result;
+                imgObj.onload = function () {
+                    var image = new fabric.Image(imgObj);
+                    canvas.add(image);
+                }
+            }
+            canvas.renderAll();
+        }
+    }
+*/
+
+    if (typeof document !== 'undefined') {
+        document.getElementById('imgLoader').onchange = function handleImage(e) {
+            var reader = new FileReader();
+            reader.onload = function (event) { console.log('fdsf');
+                var imgObj = new Image();
+                imgObj.src = event.target.result;
+                imgObj.onload = function () {
+                    // start fabricJS stuff
+                    
+                    var image = new fabric.Image(imgObj);
+                    /*Simage.set({
+                        left: 250,
+                        top: 250,
+                        angle: 20,
+                        padding: 10,
+                        cornersize: 10
+                    });*/
+                    //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+                    canvas.add(image);
+                    
+                    // end fabricJS stuff
+                }
+                
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    }
+
+
+
 
     const changeOpacity = function() {                          //Button opacity
         canvas.getActiveObjects().forEach((obj) => {
@@ -110,6 +158,7 @@ const App = () => {
                 <button onClick={() => moveTo('front')}>Up</button>
                 <button onClick={() => moveTo('back')}>Down</button>
                 <button onClick={() => savePDF()}>Download</button>
+                <input type="file" id="imgLoader"></input>
                 <div>
                     Opacity : 
                     <input type="range" min="1" max="100" value="100" class="slider" id="slideOpacity"></input>

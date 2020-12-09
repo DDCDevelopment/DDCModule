@@ -6,6 +6,9 @@ import Modal from 'react-awesome-modal';
 import { Container, Row, Col, Card, CardColumns, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import jsondata from './data.JSON';
 import App from './fabric';
+import images from './images/logo-dealer.png';
+
+
 
 /*var stringified = JSON.stringify(jsondata);
 var parsedObj = JSON.parse(stringified);*/      //Import data from data.json, and parse it
@@ -19,8 +22,6 @@ var selected_underproduct = product_array[0][1];
 var list_cat = ["Product-card", "under_product", "selected_perso"];
 
 const img = 'https://media3.dealerdecoque.fr/themes/ddcV2/img/logo_ddc.svg';
-
-
 
 
 function findProduct(array, tofind) {
@@ -287,7 +288,7 @@ class Index extends React.Component {
                     <div>
                         <img src="https://media2.dealerdecoque.fr/img/dealer-de-coque-logo-15936736591.jpg" alt="" id="logo_dealer"></img>
                         <p>Dealer de Coque <br></br> 2020 - Emilien et Thomas</p>
-
+                        <img src={images}></img>
                     </div>
                 </body>
 
