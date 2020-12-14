@@ -6,7 +6,7 @@ import Modal from 'react-awesome-modal';
 import { Container, Row, Col, Card, CardColumns, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import jsondata from './data.JSON';
 import App from './fabric';
-import images from './images/logo-dealer.png';
+import Image from 'next/image'
 
 
 
@@ -31,7 +31,6 @@ function findProduct(array, tofind) {
         }
     }
 }
-
 
 
 
@@ -286,9 +285,8 @@ class Index extends React.Component {
                     <hr></hr>
 
                     <div>
-                        <img src="https://media2.dealerdecoque.fr/img/dealer-de-coque-logo-15936736591.jpg" alt="" id="logo_dealer"></img>
+                        <Image src="/logo-dealer.png" alt="me" width="200" height="64" />
                         <p>Dealer de Coque <br></br> 2020 - Emilien et Thomas</p>
-                        <img src={images}></img>
                     </div>
                 </body>
 
