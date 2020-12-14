@@ -1,2 +1,0 @@
-un bouton centrer l'image selectionné.
-et une case pour voir son image depassé du produit.
