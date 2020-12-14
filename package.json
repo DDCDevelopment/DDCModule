@@ -36,6 +36,7 @@
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.14.0",
     "styled-components": "^5.2.1",
+    "tslib": "^1.14.1",
     "url-loader": "^4.1.1"
   }
 }

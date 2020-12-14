@@ -37,7 +37,7 @@ const App = () => {
       }
 
     const addImage = function() {                               //Button Image
-        fabric.Image.fromURL('http://atelierdudealer.fr/images/logo-dealer.png',function(img) {
+        fabric.Image.fromURL("/logo-dealer.png",function(img) {
         img.crossOrigin = 'anonymous';
         img.scale(0.05).set({opacity: 1});
         canvas.add(img);

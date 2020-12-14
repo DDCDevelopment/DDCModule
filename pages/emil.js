@@ -145,7 +145,7 @@ class Index extends React.Component {
                     product.push(
                         
                         <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][0], 1)}>
-                            <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" className="img_prod"/>
+                            <Card.Img variant="top" src="/logo-dealer.png" className="img_prod"/>
                             <Card.Body>
                                 <Card.Title>{product_array[x][0]}</Card.Title>
                                 <Card.Text>
@@ -161,18 +161,20 @@ class Index extends React.Component {
             let product = [];
             let x = findProduct(product_array, selected_product);
                 for (let y = 1; product_array[x][y]; y++){
-                    product.push(
-                        <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
-                            <Card.Img variant="top" src="https://cdn.manelli.com/12932-thickbox_default/tee-shirt-de-boulanger-blanc.jpg" className="img_prod"/>
-                            <Card.Body>
-                                <Card.Title>{product_array[x][y]}</Card.Title>
-                                <Card.Text>
-                                        personnalisable
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    );
-                }
+                    var file = '/' + product_array[x][y] + ".jpg";
+                        product.push(
+                            <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
+                                <Card.Img variant="top" src={file} onError={(e)=>{e.target.onerror = null; e.target.src="/logo-dealer.png"}} className="img_prod"/>
+                                <Card.Body>                                     {/*UPPER - change the image if image is an error*/ }
+                                    <Card.Title>{product_array[x][y]}</Card.Title>
+                                    <Card.Text>
+                                            personnalisable
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        );
+                    }
+
             return(product);
         }
     }
