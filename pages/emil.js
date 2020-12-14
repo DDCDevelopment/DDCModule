@@ -6,7 +6,7 @@ import Modal from 'react-awesome-modal';
 import { Container, Row, Col, Card, CardColumns, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import jsondata from './data.JSON';
 import App from './fabric';
-import images from './images/logo-dealer.png';
+import images from '../src/images/logo-dealer.png';
 
 
 
