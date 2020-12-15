@@ -13,7 +13,7 @@ const App = () => {
     const initCanvas = () => (                                  //Workdesk
         new fabric.Canvas('canvas', {
             preserveObjectStacking:true,
-            height: 400,
+            height: 450,
             width: 800,
             backgroundColor: 'pink'
         })

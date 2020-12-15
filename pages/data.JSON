@@ -52,12 +52,17 @@
     ],
     "textile": [
         "Tee-shirt",
-        "libi"
+        "Coussin",
+        "Tote Bag"
     ],
     "coque": [
         "Sublimation",
         "UV",
         "3D"
+    ],
+    "mug":[
+        "emaillée",
+        "magique"
     ]
 }
 

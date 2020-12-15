@@ -15,6 +15,7 @@ var parsedObj = JSON.parse(stringified);*/      //Import data from data.json, an
 var product_array = jsondata.product;           //Stock the data into a var to make it a 2D Array
 var filter_textile = jsondata.textile;
 var filter_coque = jsondata.coque;
+var filter_mugs = jsondata.mug;
 
 var selected_product = 'Textile';               //Define a default product category to prevent error
 var selected_underproduct = product_array[0][1];
@@ -89,6 +90,11 @@ class Index extends React.Component {
                 return ("filterDiv " + filter_textile[x] + " show");
             }
         }
+        for (let x = 0; filter_mugs[x]; x++) {
+            if (product.includes(filter_mugs[x])) {          //Check for filter list of the product "mugs"
+                return ("filterDiv " + filter_mugs[x] + " show");
+            }
+        }
         return ("filterDiv else show");                         //If the product do not have a filter, return default value.
     }
 
@@ -112,29 +118,82 @@ class Index extends React.Component {
 
 
 
-    DisplayFilter(product) {                            //Show filter menu depending of the data stocked into data.JSON file
-        if (product == 'Textile' || product == 'Coque') {
-            let filter = [];
-            let current_filter = (product =='Textile') ? filter_textile : filter_coque;
-            return (
-                <DropdownButton id="dropdown-basic-button" title="Filtres">
-                    <ButtonGroup id="div_filtre">
-
-                                                        {/*Filter All*/}
-                        <Row>
-                            <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
-                        </Row>
-
-                                                        {/*Call function to create filter from data.JSON depending of selected category.*/}
-                        {current_filter.map(active_filter => (
-                        <Row>
-                            <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
-                        </Row>
-                    ))}
-
-                    </ButtonGroup>
-                </DropdownButton>
-            );
+    DisplayFilter(product) {  
+        
+        switch (product) {
+            case "Textile":
+                var filter = [];
+                var current_filter = filter_textile;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+    
+                                                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+    
+                                                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                            </Row>
+                        ))}
+    
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
+        
+            case "Coque":
+                var filter = [];
+                var current_filter = filter_coque;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+    
+                                                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+    
+                                                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                            </Row>
+                        ))}
+    
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
+            
+            case "Mugs":
+                var filter = [];
+                var current_filter = filter_mugs;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+    
+                                                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+    
+                                                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                            </Row>
+                        ))}
+    
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
+            default:
+                break;
         }
     }
 
@@ -161,7 +220,8 @@ class Index extends React.Component {
             let product = [];
             let x = findProduct(product_array, selected_product);
                 for (let y = 1; product_array[x][y]; y++){
-                    var file = '/' + product_array[x][y] + ".jpg";
+                    var ext = ".jpeg" || ".jpg";
+                    var file = '/' + product_array[x][y] + ext;
                         product.push(
                             <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
                                 <Card.Img variant="top" src={file} onError={(e)=>{e.target.onerror = null; e.target.src="/logo-dealer.png"}} className="img_prod"/>
