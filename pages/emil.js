@@ -238,10 +238,8 @@ class Index extends React.Component {
                     </div>
 
 
-
-
                     <div id="centre">
-                        <img src="https://img.icons8.com/ios/452/t-shirt--v1.png" alt="" id="img_center"></img>
+                    <Image src="/logo-dealer.png" alt="Image Centre" id="img_center" />
                         <div className="center">
                             <Button variant="primary" type="button" className="button" value="Open" onClick={() => this.openModal()}>Open</Button>
                             <Modal visible={this.state.visible} width="1500" height="600" effect="fadeInUp"
@@ -287,7 +285,7 @@ class Index extends React.Component {
                     <hr></hr>
 
                     <div>
-                        <Image src="/logo-dealer.png" alt="me" width="200" height="64" />
+                        <Image src="/logo-dealer.png" alt="Logo Dealer" width="200" height="64" />
                         <p>Dealer de Coque <br></br> 2020 - Emilien et Thomas</p>
                     </div>
                 </body>

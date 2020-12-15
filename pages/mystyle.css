@@ -233,3 +233,13 @@ body{
   color: white;
   font-size: 100%;
 }*/
+
+.filterDiv {
+  margin: 2px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
