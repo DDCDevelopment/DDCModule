@@ -239,7 +239,7 @@ class Index extends React.Component {
 
 
                     <div id="centre">
-                    <Image src="/logo-dealer.png" alt="Image Centre" id="img_center" />
+                    <Image src="/logo-dealer.png" alt="Logo Dealer" width="200" height="64" />
                         <div className="center">
                             <Button variant="primary" type="button" className="button" value="Open" onClick={() => this.openModal()}>Open</Button>
                             <Modal visible={this.state.visible} width="1500" height="600" effect="fadeInUp"

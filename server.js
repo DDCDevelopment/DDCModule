@@ -1,4 +1,6 @@
 require('isomorphic-fetch');
+
+const httperror = require('http-errors');
 const dotenv = require('dotenv');
 const Koa = require('koa');
 const next = require('next');
