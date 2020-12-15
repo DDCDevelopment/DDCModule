@@ -9,7 +9,7 @@ const App = () => {
     useEffect(() => {
         setCanvas(initCanvas());
     }, []);
-
+    
     const initCanvas = () => (                                  //Workdesk
         new fabric.Canvas('canvas', {
             preserveObjectStacking:true,
@@ -17,6 +17,8 @@ const App = () => {
             width: 800,
             backgroundColor: 'pink'
         })
+        
+        
     )
 
     const addRect = canvi => {                                  //Button rect

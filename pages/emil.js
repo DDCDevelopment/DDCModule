@@ -38,16 +38,16 @@ function findProduct(array, tofind) {
 
 class Index extends React.Component {
     state = { open: false };
-        constructor(props) {
-            super(props);
-            this.state = {
-                visible : false
-            }
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
         }
+    }
 
 
 
-    filterSelection(c){                                         //filter elements
+    filterSelection(c) {                                         //filter elements
         var x, i;
         x = document.getElementsByClassName("filterDiv");
         if (c == "all") c = "";
@@ -62,7 +62,7 @@ class Index extends React.Component {
         arr1 = element.className.split(" ");
         arr2 = name.split(" ");
         for (i = 0; i < arr2.length; i++) {
-            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
         }
     }
 
@@ -102,11 +102,11 @@ class Index extends React.Component {
 
 
     HandleOnClick(category, number) {
-        if (number == 1){
+        if (number == 1) {
             selected_product = category;
             this.ShowCategory(1);               //Call the function to diplay the list of a category
         }
-        if (number == 2){
+        if (number == 2) {
             selected_underproduct = category;
             this.ShowCategory(2);               //Call the function to display the product personnalisation
         }
@@ -118,8 +118,8 @@ class Index extends React.Component {
 
 
 
-    DisplayFilter(product) {  
-        
+    DisplayFilter(product) {
+
         switch (product) {
             case "Textile":
                 var filter = [];
@@ -127,67 +127,66 @@ class Index extends React.Component {
                 return (
                     <DropdownButton id="dropdown-basic-button" title="Filtres">
                         <ButtonGroup id="div_filtre">
-    
-                                                            {/*Filter All*/}
+                            {/*Filter All*/}
                             <Row>
                                 <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
                             </Row>
-    
-                                                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
                             {current_filter.map(active_filter => (
-                            <Row>
-                                <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
-                            </Row>
-                        ))}
-    
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
                         </ButtonGroup>
                     </DropdownButton>
                 );
                 break;
-        
+
             case "Coque":
                 var filter = [];
                 var current_filter = filter_coque;
                 return (
                     <DropdownButton id="dropdown-basic-button" title="Filtres">
                         <ButtonGroup id="div_filtre">
-    
-                                                            {/*Filter All*/}
+
+                            {/*Filter All*/}
                             <Row>
                                 <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
                             </Row>
-    
-                                                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
                             {current_filter.map(active_filter => (
-                            <Row>
-                                <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
-                            </Row>
-                        ))}
-    
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
                         </ButtonGroup>
                     </DropdownButton>
                 );
                 break;
-            
+
             case "Mugs":
                 var filter = [];
                 var current_filter = filter_mugs;
                 return (
                     <DropdownButton id="dropdown-basic-button" title="Filtres">
                         <ButtonGroup id="div_filtre">
-    
-                                                            {/*Filter All*/}
+
+                            {/*Filter All*/}
                             <Row>
                                 <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
                             </Row>
-    
-                                                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
                             {current_filter.map(active_filter => (
-                            <Row>
-                                <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
-                            </Row>
-                        ))}
-    
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
                         </ButtonGroup>
                     </DropdownButton>
                 );
@@ -200,42 +199,42 @@ class Index extends React.Component {
     DisplayCategory(category) {                         //Function that generate te list of category and product
         if (category == 'Product_list') {
             let product = [];
-                for (let x = 0; product_array[x]; x++){ //Generate the product category by displaying each 1st item of product array (ex : product_array[x][0])
-                    product.push(
-                        
-                        <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][0], 1)}>
-                            <Card.Img variant="top" src="/logo-dealer.png" className="img_prod"/>
-                            <Card.Body>
-                                <Card.Title>{product_array[x][0]}</Card.Title>
-                                <Card.Text>
-                                        personnalisable
+            for (let x = 0; product_array[x]; x++) { //Generate the product category by displaying each 1st item of product array (ex : product_array[x][0])
+                product.push(
+
+                    <Card style={{ width: '18rem' }} onClick={() => this.HandleOnClick(product_array[x][0], 1)}>
+                        <Card.Img variant="top" src="/logo-dealer.png" className="img_prod" />
+                        <Card.Body>
+                            <Card.Title>{product_array[x][0]}</Card.Title>
+                            <Card.Text>
+                                personnalisable
                                 </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    );
-                }
-            return(product);
+                        </Card.Body>
+                    </Card>
+                );
+            }
+            return (product);
         }
         else {                                          //Generate the product list of a category (ex : product[2][x])
             let product = [];
             let x = findProduct(product_array, selected_product);
-                for (let y = 1; product_array[x][y]; y++){
-                    var ext = ".jpeg" || ".jpg";
-                    var file = '/' + product_array[x][y] + ext;
-                        product.push(
-                            <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
-                                <Card.Img variant="top" src={file} onError={(e)=>{e.target.onerror = null; e.target.src="/logo-dealer.png"}} className="img_prod"/>
-                                <Card.Body>                                     {/*UPPER - change the image if image is an error*/ }
-                                    <Card.Title>{product_array[x][y]}</Card.Title>
-                                    <Card.Text>
-                                            personnalisable
+            for (let y = 1; product_array[x][y]; y++) {
+                var ext =".jpg";
+                var file = '/' + product_array[x][y] + ext;
+                product.push(
+                    <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
+                        <Card.Img variant="top" src={file} onError={(e) => { e.target.onerror = null; e.target.src = "/logo-dealer.png" }} className="img_prod" />
+                        <Card.Body>                                     {/*UPPER - change the image if image is an error*/}
+                            <Card.Title>{product_array[x][y]}</Card.Title>
+                            <Card.Text>
+                                personnalisable
                                     </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        );
-                    }
+                        </Card.Body>
+                    </Card>
+                );
+            }
 
-            return(product);
+            return (product);
         }
     }
 
@@ -244,8 +243,8 @@ class Index extends React.Component {
 
     ShowCategory(number) {
         if (typeof document !== 'undefined') {
-                document.getElementById(list_cat[number - 1]).style.display = "none";   //Hide the previous element of the list_cat array and display the clicked one.
-                document.getElementById(list_cat[number]).style.display = "block";      //Eg : Hide textile and display product list of category textile, or display 
+            document.getElementById(list_cat[number - 1]).style.display = "none";   //Hide the previous element of the list_cat array and display the clicked one.
+            document.getElementById(list_cat[number]).style.display = "block";      //Eg : Hide textile and display product list of category textile, or display 
         }
     }
 
@@ -262,13 +261,13 @@ class Index extends React.Component {
 
     openModal() {
         this.setState({             //Open the popup AND refresh it if you call it again
-            visible : true
+            visible: true
         });
     }
 
     closeModal() {
         this.setState({             //Close the popup
-            visible : false
+            visible: false
         });
     }
 
@@ -277,84 +276,83 @@ class Index extends React.Component {
 
     state = { open: false };
     render() {                      //HTML code.
-    return (
-        <div>
-            <Page>
-            <Layout>
-            <html>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                <body>
+        return (
+            <div>
+                <Page>
+                    <Layout>
+                        <html>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                            <body>
 
-                    <div className="navbar">
-                        <button className="btn"><i className="fa fa-refresh"></i> Refresh</button>
-                        <button className="btn"><i className="fa fa-cog"></i> Settings</button>
-                    </div>
+                                <div className="navbar">
+                                    <a className="fa fa-cog" href="www.Google.fr"></a>
+                                </div>
 
-                    <div className="head">
-                        <h1 id="titre-page">
-                            Ajouter des produits à envoyer à notre équipe
+                                <div className="head">
+                                    <h1 id="titre-page">
+                                        Ajouter des produits à envoyer à notre équipe
                         </h1>
-                        <p className="ssTitre">Vous êtes à quelques pas de la personnalisation</p>
-                    </div>
+                                    <p className="ssTitre">Vous êtes à quelques pas de la personnalisation</p>
+                                </div>
 
 
-                    <div id="centre">
-                    <Image src="/logo-dealer.png" alt="Logo Dealer" width="200" height="64" />
-                        <div className="center">
-                            <Button variant="primary" type="button" className="button" value="Open" onClick={() => this.openModal()}>Open</Button>
-                            <Modal visible={this.state.visible} width="1500" height="600" effect="fadeInUp"
-                                onClickAway={() => this.closeModal()}>
+                                <div id="centre">
+                                    <Image src="/fond.png" alt="Logo Dealer" width="300" height="200" />
+                                    <div className="center">
+                                        <Button variant="primary" type="button" className="btn btn-primary" value="Open" onClick={() => this.openModal()}>Open</Button>
+                                        <Modal visible={this.state.visible} width="1500" height="600" effect="fadeInUp"
+                                            onClickAway={() => this.closeModal()}>
 
 
-                            <div id="Product-card">
+                                            <div id="Product-card">
 
-                                <a href="javascript:void(0);" onClick={() => this.closeModal()}><button class="close_modal">Close</button></a>
+                                                <a href="javascript:void(0);" onClick={() => this.closeModal()}><button class="close_modal">Close</button></a>
 
-                                <CardColumns id="div_card">
-                                    {this.DisplayCategory('Product_list', 1)}
-                                </CardColumns>
-
-
-                            </div>
+                                                <CardColumns id="div_card">
+                                                    {this.DisplayCategory('Product_list', 1)}
+                                                </CardColumns>
 
 
-                            <div id="under_product">
-
-                                <a href="javascript:void(0);" onClick={() => this.HideCategory(1)}><button class="close_modal">Back</button></a>
-
-                                {this.DisplayFilter(selected_product)}
-
-                                <CardColumns id="div_card">
-                                {this.DisplayCategory(selected_product, 2)}
-                                </CardColumns>
-                            </div>
-
-                            <div id="selected_perso">
-
-                                <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><button class="close_modal">Back</button></a>
-                                <p>i'm here {selected_underproduct}</p>
-                                <App />
-                            </div>
+                                            </div>
 
 
+                                            <div id="under_product">
 
-                            </Modal>
-                        </div>
-                    </div>
+                                                <a href="javascript:void(0);" onClick={() => this.HideCategory(1)}><button class="close_modal">Back</button></a>
 
-                    <hr></hr>
+                                                {this.DisplayFilter(selected_product)}
 
-                    <div>
-                        <Image src="/logo-dealer.png" alt="Logo Dealer" width="200" height="64" />
-                        <p>Dealer de Coque <br></br> 2020 - Emilien et Thomas</p>
-                    </div>
-                </body>
+                                                <CardColumns id="div_card">
+                                                    {this.DisplayCategory(selected_product, 2)}
+                                                </CardColumns>
+                                            </div>
 
-            </html>
-            </Layout>
-            </Page >
-        </div>
-    );
+                                            <div id="selected_perso">
+
+                                                <a href="javascript:void(0);" onClick={() => this.HideCategory(2)}><button class="close_modal">Back</button></a>
+                                                <p>i'm here {selected_underproduct}</p>
+                                                <App />
+                                            </div>
+
+
+
+                                        </Modal>
+                                    </div>
+                                </div>
+
+                                <hr></hr>
+
+                                <div>
+                                    <Image src="/logo-dealer.png" alt="Logo Dealer" width="150" height="64" />
+                                    <p>Dealer de Coque <br></br> 2020 - Emilien et Thomas</p>
+                                </div>
+                            </body>
+
+                        </html>
+                    </Layout>
+                </Page >
+            </div>
+        );
     }
 
 
