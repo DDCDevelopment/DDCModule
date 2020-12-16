@@ -12,10 +12,16 @@ import Image from 'next/image'
 
 /*var stringified = JSON.stringify(jsondata);
 var parsedObj = JSON.parse(stringified);*/      //Import data from data.json, and parse it
+
+
 var product_array = jsondata.product;           //Stock the data into a var to make it a 2D Array
 var filter_textile = jsondata.textile;
 var filter_coque = jsondata.coque;
 var filter_mugs = jsondata.mug;
+var filter_affiche = jsondata.affiche;
+var filter_accessoire = jsondata.accessoire;
+var filter_airpods = jsondata.airpod;
+var filter_ordinateurs = jsondata.ordinateur;
 
 var selected_product = 'Textile';               //Define a default product category to prevent error
 var selected_underproduct = product_array[0][1];
@@ -34,8 +40,6 @@ function findProduct(array, tofind) {
 }
 
 
-
-
 class Index extends React.Component {
     state = { open: false };
     constructor(props) {
@@ -45,7 +49,7 @@ class Index extends React.Component {
         }
     }
 
-
+    ////////////////////////////////////////////////////////////////////////////// Filter Action /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     filterSelection(c) {                                         //filter elements
         var x, i;
@@ -95,26 +99,28 @@ class Index extends React.Component {
                 return ("filterDiv " + filter_mugs[x] + " show");
             }
         }
+        for (let x = 0; filter_accessoire[x]; x++) {
+            if (product.includes(filter_accessoire[x])) {          //Check for filter list of the product "mugs"
+                return ("filterDiv " + filter_accessoire[x] + " show");
+            }
+        }
+        for (let x = 0; filter_affiche[x]; x++) {
+            if (product.includes(filter_affiche[x])) {          //Check for filter list of the product "mugs"
+                return ("filterDiv " + filter_affiche[x] + " show");
+            }
+        }
+        for (let x = 0; filter_airpods[x]; x++) {
+            if (product.includes(filter_airpods[x])) {          //Check for filter list of the product "mugs"
+                return ("filterDiv " + filter_airpods[x] + " show");
+            }
+        }
+        for (let x = 0; filter_ordinateurs[x]; x++) {
+            if (product.includes(filter_ordinateurs[x])) {          //Check for filter list of the product "mugs"
+                return ("filterDiv " + filter_ordinateurs[x] + " show");
+            }
+        }
         return ("filterDiv else show");                         //If the product do not have a filter, return default value.
     }
-
-
-
-
-    HandleOnClick(category, number) {
-        if (number == 1) {
-            selected_product = category;
-            this.ShowCategory(1);               //Call the function to diplay the list of a category
-        }
-        if (number == 2) {
-            selected_underproduct = category;
-            this.ShowCategory(2);               //Call the function to display the product personnalisation
-        }
-        this.closeModal();
-        this.openModal();                       //Refresh the Modal (popup)
-    }
-
-
 
 
 
@@ -191,10 +197,122 @@ class Index extends React.Component {
                     </DropdownButton>
                 );
                 break;
+
+            case "Accessoire":
+                var filter = [];
+                var current_filter = filter_accessoire;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+
+                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
+
+            case "Affiche":
+                var filter = [];
+                var current_filter = filter_affiche;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+
+                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
+
+            case "Airpod":
+                var filter = [];
+                var current_filter = filter_airpods;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+
+                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
+
+            case "ordinateur":
+                var filter = [];
+                var current_filter = filter_ordinateurs;
+                return (
+                    <DropdownButton id="dropdown-basic-button" title="Filtres">
+                        <ButtonGroup id="div_filtre">
+
+                            {/*Filter All*/}
+                            <Row>
+                                <Button id="btn_filtre" onClick={() => this.filterSelection('all')}>All</Button>
+                            </Row>
+
+                            {/*Call function to create filter from data.JSON depending of selected category.*/}
+                            {current_filter.map(active_filter => (
+                                <Row>
+                                    <Button id="btn_filtre" onClick={() => this.filterSelection(active_filter)}>{active_filter}</Button>
+                                </Row>
+                            ))}
+
+                        </ButtonGroup>
+                    </DropdownButton>
+                );
+                break;
             default:
                 break;
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////// Category action //////////////////////////////////////////////////////////////////////////////
+
+    HandleOnClick(category, number) {
+        if (number == 1) {
+            selected_product = category;
+            this.ShowCategory(1);               //Call the function to diplay the list of a category
+        }
+        if (number == 2) {
+            selected_underproduct = category;
+            this.ShowCategory(2);               //Call the function to display the product personnalisation
+        }
+        this.closeModal();
+        this.openModal();                       //Refresh the Modal (popup)
+    }
+
 
     DisplayCategory(category) {                         //Function that generate te list of category and product
         if (category == 'Product_list') {
@@ -219,7 +337,7 @@ class Index extends React.Component {
             let product = [];
             let x = findProduct(product_array, selected_product);
             for (let y = 1; product_array[x][y]; y++) {
-                var ext =".jpg";
+                var ext = ".jpg";
                 var file = '/' + product_array[x][y] + ext;
                 product.push(
                     <Card style={{ width: '18rem' }} className={this.takeClass(product_array[x][y])} onClick={() => this.HandleOnClick(product_array[x][y], 2)}>
@@ -232,13 +350,12 @@ class Index extends React.Component {
                         </Card.Body>
                     </Card>
                 );
+                
             }
 
             return (product);
         }
     }
-
-
 
 
     ShowCategory(number) {
@@ -256,7 +373,7 @@ class Index extends React.Component {
     }
 
 
-
+    ////////////////////////////////////////////////////////////////////////////// Modal Action O/C /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     openModal() {
@@ -272,7 +389,7 @@ class Index extends React.Component {
     }
 
 
-
+    ////////////////////////////////////////////////////////////////////////////// //Mise en page ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     state = { open: false };
     render() {                      //HTML code.
@@ -343,7 +460,7 @@ class Index extends React.Component {
                                 <hr></hr>
 
                                 <div>
-                                    <Image src="/logo-dealer.png" alt="Logo Dealer" width="150" height="64" />
+                                    <Image src="/logo-dealer.png" alt="Logo Dealer" width="100" height="40" />
                                     <p>Dealer de Coque <br></br> 2020 - Emilien et Thomas</p>
                                 </div>
                             </body>

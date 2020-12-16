@@ -63,6 +63,29 @@
     "mug":[
         "emaillée",
         "magique"
+    ],
+    "affiche":[
+        
+    ],
+    "accessoire":[
+        "Grips",
+        "Tapis de souris",
+        "Porte-clef",
+        "Cadre",
+        "Badge",
+        "Puzzle",
+        "Masque"
+        
+    ],
+    "airpod":[
+        "Airpod",
+        "Airpods transparent",
+        "Airpod pro transparent"
+    ],
+    "ordinateur":[
+        "Apple",
+        "Asus"
+        
     ]
 }
 

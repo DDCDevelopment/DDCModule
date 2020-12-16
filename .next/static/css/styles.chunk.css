@@ -5575,6 +5575,8 @@ body{
 .show {
   display: block;
 }
+
+
 #product_perso {
   display: inline-block;
   text-align: center;
@@ -5584,4 +5586,7 @@ body{
   display: inline-block;
   text-align: center;
 }
+
+
+
 
